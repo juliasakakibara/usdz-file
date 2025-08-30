@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>USDZ Preview</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wdth,wght@100..900&display=swap" rel="stylesheet">
+  <!-- Todos os estilos estão em style.css -->
+  </head>
+  <body>
+    <div class="demo">
+      <model-viewer 
+        id="model-viewer"
+        src="HiddenGuardiansFixed.glb"
+        ar ar-modes="scene-viewer quick-look"
+        camera-controls
+        auto-rotate
+        camera-orbit="0deg 80deg 3m"
+        field-of-view="auto"
+        camera-target="auto"
+        min-camera-orbit="auto auto 0.5m"
+        max-camera-orbit="auto auto 3m"
+        touch-action="pan-y"
+        alt="Modelo 3D"
+        shadow-intensity="1"
+        shadow-softness="1"
+        ground-plane="shadow"
+        ground-plane-height="-0.2"
+        disable-pan
+        style="width:100vw; height:100vh; background-color: unset;"
+      >
+      </model-viewer>
+    </div>
+    <script>
+      document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
+        if(event.detail.status === 'failed'){
+          console.log('AR não é suportado neste dispositivo');
+        }
+      });
+    </script>
+  </body>
+</html>
